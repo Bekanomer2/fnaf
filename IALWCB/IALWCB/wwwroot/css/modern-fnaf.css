@@ -181,7 +181,43 @@ html, body {
     background: #000;
 }
 
-.nav-logo {
+    .nav-logo {
     height: 60px; /* Четкий размер */
     width: auto;
+}
+
+/* --- CART MODAL STYLES --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.modal-content {
+    animation: glitch-anim 0.3s infinite alternate-reverse;
+}
+
+/* Checkout Form Input Styles */
+.checkout-form input {
+    font-family: 'Courier New', monospace;
+    transition: border-color 0.3s;
+}
+
+.checkout-form input:focus {
+    outline: none;
+    border-color: red !important;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #333;
+    padding: 5px 0;
 }

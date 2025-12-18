@@ -24,11 +24,11 @@ namespace IALWCB
 
             app.UseAuthorization();
 
-            app.MapStaticAssets();
+            app.UseStaticFiles();
+
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Game}/{action=Index}/{id?}")
-                .WithStaticAssets();
+                pattern: "{controller=Game}/{action=Index}/{id?}");
 
             app.Run();
         }
