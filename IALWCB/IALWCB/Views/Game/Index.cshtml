@@ -1,0 +1,76 @@
+﻿@{
+    ViewData["Title"] = "Fazbear Official Hub";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/modern-fnaf.css" asp-append-version="true" />
+}
+
+<div class="main-wrapper">
+    <nav class="navbar">
+        <img src="~/images/fazbear_logo.png" class="nav-logo" alt="Fazbear Ent.">
+        <div class="nav-links">
+            <a href="#">PIZZA</a>
+            <a href="#">MERCH</a>
+            <div class="cart-icon">
+                🛒 <span id="cart-count">0</span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="hero-section">
+        <div class="poster-container">
+            <img src="~/images/freddy_poster.jpg" id="freddy-poster" alt="Celebrate!" />
+            <div id="nose-trigger"></div>
+        </div>
+    </div>
+
+    <div class="container shop-section">
+        <h2 class="section-title">TODAY'S OFFERS</h2>
+        <div class="grid-container">
+            <div class="shop-card">
+                <img src="~/images/pizza_chili.png" alt="Pizza">
+                <h3>Chili Pepper Pizza</h3>
+                <p>$19.87</p>
+                <button class="buy-btn" onclick="addToCart()">ORDER NOW</button>
+            </div>
+
+            <div class="shop-card">
+                <img src="~/images/freddy_plush.jpg" alt="Plush">
+                <h3>Freddy Plushie</h3>
+                <p>$14.99</p>
+                <button class="buy-btn" onclick="addToCart()">ADD TO CART</button>
+            </div>
+        </div>
+    </div>
+
+    <footer style="text-align: center; padding: 50px; opacity: 0.5;">
+        <p>&copy; 1987 Fazbear Entertainment</p>
+        <a href="/Game/SecretMenu" style="color: #111; text-decoration: none; font-size: 12px;">ADMIN_LOGIN_BYPASS</a>
+    </footer>
+</div>
+
+<audio id="honk-sound" src="/sounds/nose_honk.oga"></audio>
+
+@section Scripts {
+    <script>
+        // Звук носа
+        $('#nose-trigger').on('click', function() {
+            const audio = document.getElementById('honk-sound');
+            audio.currentTime = 0;
+            audio.play();
+
+            // Визуальный эффект нажатия (чуть сжимаем постер)
+            $('#freddy-poster').addClass('compressed');
+            setTimeout(() => $('#freddy-poster').removeClass('compressed'), 100);
+        });
+
+        // Простая логика корзины
+        let count = 0;
+        function addToCart() {
+            count++;
+            $('#cart-count').text(count).addClass('bump');
+            setTimeout(() => $('#cart-count').removeClass('bump'), 300);
+        }
+    </script>
+}

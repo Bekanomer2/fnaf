@@ -1,0 +1,68 @@
+﻿/* СТИЛИ ДЛЯ МАГАЗИНА */
+body {
+    background-color: #050505;
+    color: #fff;
+    font-family: 'Courier New', monospace;
+}
+
+.faz-header {
+    padding: 20px;
+    border-bottom: 2px solid #222;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.shop-container {
+    padding: 40px;
+}
+
+.items-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.item {
+    background: #111;
+    padding: 20px;
+    border: 1px solid #333;
+    text-align: center;
+    transition: 0.3s;
+}
+
+    .item:hover {
+        border-color: #555;
+        box-shadow: 0 0 15px rgba(255,255,255,0.05);
+    }
+
+    .item img {
+        max-width: 100%;
+        filter: brightness(0.8);
+        margin-bottom: 15px;
+    }
+
+    .item button {
+        background: #222;
+        color: #eee;
+        border: 1px solid #444;
+        padding: 10px 20px;
+        cursor: pointer;
+        width: 100%;
+    }
+
+        .item button:hover {
+            background: #333;
+        }
+
+/* Скрытая дверь */
+#secret-door {
+    width: 40px;
+    height: 60px;
+    background: #000;
+    border: 1px solid #1a1a1a;
+    margin: 40px auto;
+    cursor: pointer;
+    transition: 2s; /* Чтобы появлялась плавно */
+}

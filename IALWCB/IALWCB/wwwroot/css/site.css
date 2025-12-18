@@ -1,0 +1,90 @@
+/* ОБЩИЕ ЭФФЕКТЫ ХОРРОРА */
+#secret-jumpscare {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    z-index: 9999;
+    background: black url('/images/Random_Screens.png') no-repeat;
+    background-size: 100% 600%;
+    transform: scale(1.05);
+}
+
+.monitor-glitch {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('/images/static_noise.gif');
+    opacity: 0;
+    pointer-events: none;
+    z-index: 9000;
+    animation: random-static 15s infinite;
+}
+
+@keyframes random-static {
+    0%, 93% {
+        opacity: 0;
+    }
+
+    94% {
+        opacity: 0.3;
+    }
+
+    95% {
+        opacity: 0.1;
+    }
+
+    96% {
+        opacity: 0.5;
+    }
+
+    97%, 100% {
+        opacity: 0;
+    }
+}
+
+
+body {
+    background-color: #050505;
+    color: #00ff41; /* Тот самый хакерский зеленый или белый */
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.staff-access-header {
+    border-bottom: 2px solid #222;
+    padding: 20px;
+    background: linear-gradient(to bottom, #111, #000);
+}
+
+/* Стиль карточек товаров */
+.product-card {
+    border: 1px solid #333;
+    background: #0a0a0a;
+    transition: all 0.3s;
+    padding: 15px;
+    text-align: center;
+}
+
+    .product-card:hover {
+        border-color: #ff0000; /* Красное свечение при наведении */
+        box-shadow: 0 0 15px rgba(255, 0, 0, 0.2);
+    }
+
+/* Кнопки как в старых DOS-программах */
+.btn-fazbear {
+    background: #222;
+    color: #fff;
+    border: 1px solid #444;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+    .btn-fazbear:hover {
+        background: #ff0000;
+        color: white;
+    }
