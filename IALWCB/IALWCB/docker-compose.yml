@@ -10,4 +10,21 @@ services:
       - "8081:8081"
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+    depends_on:
+      - db
     restart: always
+
+  db:
+    image: postgres:15-alpine
+    container_name: ialwcb_db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=fazbear_secret
+      - POSTGRES_DB=ialwcb_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

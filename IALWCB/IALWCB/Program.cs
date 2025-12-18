@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+
 namespace IALWCB
 {
     public class Program
@@ -8,6 +10,12 @@ namespace IALWCB
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            // Database Configuration
+            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") 
+                                   ?? "Host=db;Database=ialwcb_db;Username=postgres;Password=fazbear_secret";
+            builder.Services.AddDbContext<IALWCB.Data.ApplicationDbContext>(options =>
+                options.UseNpgsql(connectionString));
 
             var app = builder.Build();
 
@@ -23,6 +31,13 @@ namespace IALWCB
             app.UseRouting();
 
             app.UseAuthorization();
+
+            // Auto-migrate database on startup
+            using (var scope = app.Services.CreateScope())
+            {
+                var db = scope.ServiceProvider.GetRequiredService<IALWCB.Data.ApplicationDbContext>();
+                db.Database.EnsureCreated();
+            }
 
             app.UseStaticFiles();
 

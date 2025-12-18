@@ -27,6 +27,12 @@
 
     <div class="container shop-section">
         <h2 class="section-title">TODAY'S OFFERS</h2>
+        <div class="shop-controls" style="text-align: center; margin-bottom: 20px;">
+            <button class="filter-btn active" onclick="filterShop('all')">ALL</button>
+            <button class="filter-btn" onclick="filterShop('pizza')">PIZZA</button>
+            <button class="filter-btn" onclick="filterShop('plush')">PLUSHIES</button>
+            <button class="filter-btn" onclick="filterShop('merch')">MERCH</button>
+        </div>
         <div id="shop-container" class="grid-container">
             <!-- Items injected by shop.js -->
         </div>
@@ -56,10 +62,34 @@
     <footer style="text-align: center; padding: 50px; opacity: 0.5;">
         <p>&copy; 1987 Fazbear Entertainment</p>
         <a href="/Game/SecretMenu" style="color: #111; text-decoration: none; font-size: 12px;">ADMIN_LOGIN_BYPASS</a>
+        
+        <!-- SECRET INTERACTIVE DOOR -->
+        <!-- Always visible, but visually locked unless key is owned -->
+        <div id="secret-door-container" style="margin-top: 50px; padding: 20px; border-top: 2px solid #333;">
+            <p id="door-status-text" style="color: #555; font-family: 'Courier New'; font-weight: bold; font-size: 1.2em;">[ SECURITY CLEARANCE REQUIRED ]</p>
+            
+            <div id="interactive-door" class="door-locked" style="transition: all 0.5s ease;">
+                <div class="door-plate" style="width: 120px; height: 200px; background: #2a2a2a; margin: 20px auto; border: 4px solid #444; position: relative; box-shadow: inset 0 0 20px #000; display: flex; align-items: center; justify-content: center; cursor: not-allowed;">
+                    <!-- Keyhole / Scanner -->
+                    <div id="door-scanner" style="width: 60px; height: 60px; background: #000; border-radius: 5px; border: 2px solid #500; display: flex; align-items: center; justify-content: center;">
+                        <span id="scanner-light" style="display: block; width: 10px; height: 10px; background: red; border-radius: 50%; box-shadow: 0 0 10px red;"></span>
+                    </div>
+                </div>
+                <p id="door-hint" style="font-size: 0.8em; color: #444;">(Insert Level 5 Keycard)</p>
+            </div>
+        </div>
     </footer>
 </div>
 
+</div>
+
 <audio id="honk-sound" src="/sounds/nose_honk.oga"></audio>
+
+<!-- SECRET VIDEO OVERLAY -->
+<div id="secret-video-overlay" style="display:none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: black; z-index: 9999; align-items: center; justify-content: center;">
+    <iframe id="afton-video" width="100%" height="100%" src="https://www.youtube.com/embed/g39qEM0REyY?enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <button onclick="closeSecretVideo()" style="position: absolute; top: 20px; right: 20px; color: white; background: transparent; border: 1px solid white; padding: 5px; cursor: pointer; z-index: 10000;">CLOSE FEED</button>
+</div>
 
     <script src="~/js/shop.js" asp-append-version="true"></script>
 }
